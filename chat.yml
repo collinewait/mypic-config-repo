@@ -1,0 +1,21 @@
+server:
+  port: 8200
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: my-pic-chat
+          group: comments-chat
+          content-type: application/json
+        newComments:
+          destination: my-pic-chat
+          group: comments-chat
+          content-type: application/json
+        clientToBroker:
+          destination: my-pic-chat-user-messages
+          group: app-chatMessages
+        brokerToClient:
+          destination: my-pic-chat-user-messages
+          group: topic-chatMessages
