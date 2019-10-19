@@ -12,7 +12,9 @@ spring:
       bindings:
         input:
           destination: my-pic-comments
-          group: my-pic
+          group: comments-service
+          content-type: application/json
         output:
-          destination: my-pic-comments
-          group: my-pic
+          destination: my-pic-chat
+          group: comments-chat
+          content-type: application/json

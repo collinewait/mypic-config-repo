@@ -7,9 +7,7 @@ spring:
   cloud:
     stream:
       bindings:
-        input:
-          destination: my-pic-comments
-          group: my-pic
         output:
           destination: my-pic-comments
-          group: my-pic
+          group: comments-service
+          content-type: application/json
