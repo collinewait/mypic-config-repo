@@ -3,6 +3,35 @@ server:
 
 spring:
   cloud:
+    gateway:
+      routes:
+      - id: imagesService
+        uri: lb://IMAGES
+        predicates:
+        - Path=/imagesService/**
+        filters:
+        - RewritePath=/imageService/(?<segment>.*), /$\{segment}
+        - RewritePath=/imagesService, /
+        - SaveSession
+      - id: images
+        uri:  lb://IMAGES
+        predicates:
+        - Path=/images/**
+        filters:
+        - SaveSession
+      - id: mainCss
+        uri:  lb://IMAGES
+        predicates:
+        - Path=/main.css
+        filters:
+        - SaveSession
+      - id: commentsService
+        uri:  lb://IMAGES
+        predicates:
+        - Path=/comments/**
+        filters:
+        - SaveSession
+
     stream:
       bindings:
         input:
